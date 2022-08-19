@@ -5,6 +5,7 @@ upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 number = "0123456789"
 symbol = "[]{}#()*;._-"
 
+#selects ramdomized list of menus per day, depending on how many days the user selected
 def chooseDishes(days):
     while len(myMenu) < int(days):
         chosenDish = choice(foodWeLike)
@@ -17,6 +18,7 @@ def chooseDishes(days):
     print("Out of these, my favorite is. . ." + choice(myMenu))
     print()
 
+#gathers ingredients from the selected randomized menus. needs improvement because it doesn't exclude redundant ingredients
 def buildShoppingList():
     myShoppingList = []
     if "Adobo" in myMenu:
@@ -37,7 +39,8 @@ def buildShoppingList():
             print(ingredient)
     print("Viola! Bon apetit!")
     print()
-    
+
+#list of foods I chose. Needs improvement because it doesn't allow users to make their own recipes    
 foodWeLike = ["Adobo", "Afritada", "Champorado", "Sopas", "Tinola"]
 adobo = ["garlic", "onion", "soy sauce", "vinegar", "chicken", "pepper"]
 afritada = ["chicken", "tomato sauce", "potato", "carrot", "salt", "bellpeppers", "green peas"]
@@ -98,8 +101,9 @@ if answer == "Y":
 
         text = input("Please enter your zip code: ")
         result = cipher(text)
-        from urllib.request import urlopen
 
+        #checks the weather of the location that the user selected
+        from urllib.request import urlopen
         def get_condition(city):
                 url = "http://wttr.in/" + city + "?format=%c"
                 page = urlopen(url)
